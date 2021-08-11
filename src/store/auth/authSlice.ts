@@ -13,6 +13,10 @@ export const authSlice = createSlice({
   name: 'login',
   initialState,
   reducers: {
+    authLogout: (state, { payload }) => {
+      state.email = ''
+      state.isLogin = false
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(authLogin.fulfilled, (state, { payload }) => {
@@ -21,4 +25,5 @@ export const authSlice = createSlice({
     });
   },
 })
+export const { authLogout } = authSlice.actions
 export default authSlice.reducer

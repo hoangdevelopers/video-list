@@ -4,23 +4,30 @@ import { authLogin } from '../../store/auth/authAction';
 import { ILoginParams } from '../../model/auth';
 import { selectAuth } from "../../store/auth/authSelector";
 import "./Login.less"
+import { authLogout } from '../../store/auth/authSlice';
+import { useHistory } from 'react-router-dom';
 const Login = (props: any) => {
     const { Text } = Typography
     const dispatch = useDispatch();
     const auth = useSelector(selectAuth);
-    console.log('auth', auth)
 
     const handleLogin = (values: ILoginParams) => {
         dispatch(authLogin(values))
     };
 
+    const history = useHistory()
+
     return (
         <div>
             {auth.isLogin ?
             <div>
-                <Text>Wellcom {auth.email}</Text>
-                <Button>Share a movie</Button>
-                <Button>Logout</Button>
+                <Text>Wellcom {auth.email} { }</Text>
+                <Button onClick={() => {
+                    history.push('/share')
+                }}>Share a movie</Button>
+                <Button onClick={() => {
+                    dispatch(authLogout(null))
+                }}>Logout</Button>
             </div>
             :
             <Form

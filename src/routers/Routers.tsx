@@ -4,6 +4,7 @@ import { Redirect } from "react-router";
 import DashboardLayout from "../templates/DashboardLayout";
 import { Suspense } from "react";
 const Home = React.lazy(() => import("../pages/Home"));
+const Share = React.lazy(() => import("../pages/Share"));
 
 const Routers = () => {
   return (
@@ -14,6 +15,7 @@ const Routers = () => {
             <>
               <Route path="/" exact component={Home} />
               <Route path="/login" exact />
+              <Route path="/share" component={Share} />
             </>
           </DashboardLayout>
         </Switch>

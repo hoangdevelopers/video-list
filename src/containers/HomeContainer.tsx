@@ -1,11 +1,11 @@
 import React from "react";
 import MainContainer from "../templates/MainContainer";
-import MoviesList from "../components/MoviesList/MoviesList";
+import { MainMovies } from "../features/main-movies/MainMovies";
 
 const HomeContainer: React.FC<{}> = (props) => {
   return (
     <MainContainer>
-      <MoviesList />
+      <MainMovies />
     </MainContainer>
   );
 };
